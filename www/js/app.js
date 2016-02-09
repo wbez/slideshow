@@ -6,10 +6,10 @@ var $commentCount = null;
  */
 var onDocumentLoad = function(e) {
     // Cache jQuery references
-    $commentCount = $('.comment-count');
+    // $commentCount = $('.comment-count');
 
-    renderExampleTemplate();
-    getCommentCount(showCommentCount);
+    // renderExampleTemplate();
+    // getCommentCount(showCommentCount);
 
     SHARE.setup();
 }
@@ -43,5 +43,32 @@ var showCommentCount = function(count) {
         $commentCount.next('.comment-label').text('Comments');
     }
 }
+
+var onPageLoad = function() {
+    $('.section').css({
+      'opacity': 1,
+      'visibility': 'visible',
+    });
+};
+
+$(document).ready(function() {
+    $('#fullpage').fullpage({
+        verticalCentered: false,
+        controlArrows: true,
+        css3: true,
+        fixedElements: '#nav',
+        loopHorizontal: false,
+        autoScrolling: true,
+        keyboardScrolling: false,
+        scrollingSpeed: 700,
+        afterRender: onPageLoad,
+        onSlideLeave: function( anchorLink, index, slideIndex, direction, nextSlideIndex){
+          
+        },
+        onLeave: function( index, nextIndex, direction){
+      
+        }
+    });
+});    
 
 $(onDocumentLoad);
